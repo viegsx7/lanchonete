@@ -1,4 +1,5 @@
 import time
+import os
 class Telas:
     
     def entradaSistema( self ):
@@ -15,6 +16,7 @@ class Telas:
        time.sleep( tempo )
        # limpa a tela
        self.limpaConsole()
+       
         
     def saidaSistema( self ):
         print( f"+------------------------------------------------------------------------+" )
@@ -32,16 +34,18 @@ class Telas:
     
     def limpaConsole( self ):
 
-        #if os.name == "nt": # windows nt - Linux posix - Mac darwin
-            #os.system( "cls" )
+        if os.name == "nt": # windows nt - Linux posix - Mac darwin
+            os.system( "cls" )
         
         #elif os.name == "darwin":
             #os.system( "clear" )    
-        #else:
-            #os.system( "clear" )
+        else:
+            os.system( "clear" )
             
-        tipoSistema = os.name
-        switch( tipoSistema ):
-            case "nt":
-                os.system("cls")
-                break:    
+    def exibeMenu( self ):
+        print( f"+------------------------------------------------------------------------+" )
+        print( f"|                          Bem vindo { usuario }                         |" )
+        print( f"                     ** Menu - Escolha uma Opção: **                      " )
+        print( f"|                           1 - Cadastrar                                |" )
+        print( f"|                           2 - Listar                                |" )
+        print( f"+------------------------------------------------------------------------+" )   
