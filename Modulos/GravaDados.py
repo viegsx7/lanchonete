@@ -1,6 +1,12 @@
 import builtins
+import json
 
 class GravaDados:
+    {
+    "loginArmazenado" : "cliente",
+    "senhaArmazenada" : "1234",
+    "nomeUsuario" : "João dos Santos",
+}
 
     def salvaDados( self ):    
     #open (nomeArquivo, modoAbertura) é uma função do python3 que lê escreve arquivos
@@ -9,6 +15,14 @@ class GravaDados:
     #r+ - escrita/leitura
         
         with open( "lanchonete\\Modulos\\dados.txt", "w") as dados:
+            
+            # converter o vetor em json
+            dadosJson = json.dumps( self.usuariosCadastrados )
+            
+            dados.write( dadosJson )
+            
+            dados.close()
+            
             print( f"No arquivo temos: \n {dados}" )
             dados.write("Linha 01 \n")
             dados.write("Linha 02 \n")
@@ -29,10 +43,20 @@ class GravaDados:
             #para cada linha o arquivo de texto
             for linha in dados.readlines() :
                 print( linha.strip() )
+                
+    def adicionaCadastro( self, novoUsuario ):
+        #pegamos o json no arquivo de dados
+        with builtins.open(
+            "lanchonete\\Modulos\\dados.txt","r"
+)
+
+        # adicioando um novo item ao nosso vetor
+        self.usuariosCadastros.append( novoUsuario )
 
     def exportaDados( self ):
         print("")
 
 dados = GravaDados()
+dados.adicionaCadastro()
 dados.salvaDados()
 dados.leDados
